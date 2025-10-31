@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="relat%C3%B3rio-de-teste-de-muta%C3%A7%C3%A3o">Relatório de Teste de Mutação</h1>
+<hr>
+<h2 id="capa">Capa</h2>
+<p><strong>Disciplina:</strong> Engenharia de Software<br>
+<strong>Trabalho:</strong>  Análise de Teste de Mutação e Melhoria da Suíte de Testes<br>
+<strong>Nome do Aluno:</strong> Pedro Henrique Braga de Castro<br>
+<strong>Instituição:</strong>  PUC Minas<br>
+<strong>Data:</strong> 31 de Outubro de 2025</p>
+<hr>
+<h2 id="resumo-executivo">Resumo Executivo</h2>
+<p>Este relatório documenta o processo de melhoria do teste de mutação para o projeto de operações aritméticas. Começando com uma suíte de testes fraca que alcançava apenas <strong>73,71%</strong> de mutation score, aprimoramos sistematicamente a suíte de testes para alcançar uma pontuação final de <strong>96,71%</strong>, eliminando com sucesso a maioria dos mutantes sobreviventes através de casos de teste direcionados. Os 7 mutantes sobreviventes finais representam mutantes equivalentes que não podem ser mortos sem manipular artificialmente a implementação.</p>
+<hr>
+<h2 id="an%C3%A1lise-inicial">Análise Inicial</h2>
+<h3 id="m%C3%A9tricas-iniciais">Métricas Iniciais</h3>
+<p><strong>Cobertura de Código vs Mutation Score:</strong></p>
+<ul>
+<li><strong>Cobertura de Linhas:</strong> ~100% (todas as 50 funções cobertas por pelo menos um teste)</li>
+<li><strong>Mutation Score:</strong> 73,71% (apenas 157 de 213 mutantes mortos)</li>
+<li><strong>Total de Mutantes:</strong> 213</li>
+<li><strong>Mortos:</strong> 157 (73,71%)</li>
+<li><strong>Sobreviventes:</strong> 44 (20,66%)</li>
+<li><strong>Timeout:</strong> 3 (1,41%)</li>
+<li><strong>Sem Cobertura:</strong> 9 (4,23%)</li>
+<li><strong>Casos de Teste:</strong> 50 (suíte fraca, focada em caminhos felizes)</li>
+</ul>
+<h4 id="evid%C3%AAncias-visuais-da-an%C3%A1lise-inicial">Evidências Visuais da Análise Inicial</h4>
+<p><img src="file:///c:/Users/Pedro Henrique/OneDrive/Documentos/ES/ES - 6º periodo/mutant-operations/screenshots/fourth-step-mutants.png" alt="Relatório Stryker Inicial - Visão Geral">
+<em>Figura 1: Relatório do Stryker mostrando mutation score inicial de 73.71% com 44 mutantes sobreviventes</em></p>
+<p><img src="file:///c:/Users/Pedro Henrique/OneDrive/Documentos/ES/ES - 6º periodo/mutant-operations/screenshots/fourth-step-tests.png" alt="Cobertura de Testes Inicial">
+<em>Figura 2: Resultado dos testes Jest mostrando testes passando com alta cobertura de linhas</em></p>
+<p><em>Você pode ver a Figura 3 completamente dentro de /screenshots/fourth-step-mutations.png: Lista de mutantes sobreviventes na primeira execução do Stryker, destacando tipos de mutação (StringLiteral, LogicalOperator, EqualityOperator)</em></p>
+<h3 id="a-discrep%C3%A2ncia-entre-cobertura-e-qualidade">A Discrepância entre Cobertura e Qualidade</h3>
+<p><strong>Por que existe uma lacuna tão grande entre 100% de cobertura de linhas e 73,71% de mutation score?</strong></p>
+<p>Esta discrepância revela uma falha crítica em usar a cobertura de código como única métrica para qualidade de testes. A suíte de testes inicial alcançou uma <strong>cobertura de linhas</strong> quase perfeita porque cada função foi chamada pelo menos uma vez com entradas básicas. No entanto, o baixo <strong>mutation score</strong> expõe que esses testes eram superficiais:</p>
+<ol>
+<li>
+<p><strong>Viés do Caminho Feliz:</strong> Os testes apenas verificavam resultados bem-sucedidos esperados (ex: <code>divisao(10, 2) === 5</code>) sem verificar tratamento de erros, condições de contorno ou casos extremos.</p>
+</li>
+<li>
+<p><strong>Asserções Fracas:</strong> Os testes usavam verificação genérica de erros (<code>toThrow()</code>) ao invés de validar mensagens de erro específicas, permitindo que mutações de string literal sobrevivessem.</p>
+</li>
+<li>
+<p><strong>Testes de Contorno Ausentes:</strong> Funções foram testadas com valores &quot;normais&quot; (ex: <code>fatorial(5)</code>) mas não com valores de contorno como 0, 1, números negativos ou arrays vazios.</p>
+</li>
+<li>
+<p><strong>Cobertura de Ramificação Incompleta:</strong> Condições lógicas como <code>n === 0 || n === 1</code> foram testadas, mas não de maneiras que distinguissem entre operadores OR vs AND.</p>
+</li>
+<li>
+<p><strong>Sem Testes Negativos:</strong> Os testes não verificavam se funções retornam false/rejeitam entradas inválidas, apenas que retornam true/aceitam entradas válidas.</p>
+</li>
+</ol>
+<p><strong>Exemplo do Problema:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Teste fraco original - alcança 100% de cobertura de linhas</span>
+test(<span class="hljs-string">'deve dividir dois números'</span>, () =&gt; {
+  expect(divisao(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">5</span>);  <span class="hljs-comment">// ✓ Linha coberta</span>
+  expect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> divisao(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>)).toThrow();  <span class="hljs-comment">// ✓ Caminho de erro coberto</span>
+});
+
+<span class="hljs-comment">// Mas isso permite que mutações sobrevivam:</span>
+<span class="hljs-comment">// - Mensagem de erro pode ser alterada para string vazia</span>
+<span class="hljs-comment">// - Operadores aritméticos (/ → *, / → -) não totalmente testados</span>
+<span class="hljs-comment">// - Valores de contorno não explorados</span>
+</div></code></pre>
+<p>Esta discrepância demonstra que <strong>a cobertura de código mede qual código é executado, não quão bem ele é testado</strong>. O teste de mutação preenche essa lacuna introduzindo falhas e verificando se os testes podem detectá-las.</p>
+<h3 id="fraquezas-da-su%C3%ADte-de-testes-inicial">Fraquezas da Suíte de Testes Inicial</h3>
+<p>A suíte de testes inicial sofria de problemas estruturais significativos:</p>
+<ol>
+<li><strong>Apenas testava cenários positivos/caminho feliz</strong> - Sem testes adversários</li>
+<li><strong>Sem validação de mensagens de erro</strong> - Apenas verificava <code>se</code> erros eram lançados, não <code>o que</code> era lançado</li>
+<li><strong>Testes de valor de contorno ausentes</strong> - Sem testes para 0, -1, valores MIN/MAX, arrays vazios</li>
+<li><strong>Cobertura insuficiente de casos extremos</strong> - Arrays vazios, números negativos, precisão decimal não testados</li>
+<li><strong>Testes de ramificação lógica incompletos</strong> - Condições OR/AND não totalmente exercitadas</li>
+</ol>
+<hr>
+<h2 id="an%C3%A1lise-de-mutantes-cr%C3%ADticos">Análise de Mutantes Críticos</h2>
+<p><em>Nota: Screenshots dos relatórios de mutação do Stryker podem ser encontrados em <code>reports/mutation/mutation.html</code>. Abra este arquivo em um navegador para ver resultados detalhados do teste de mutação com status de mutante codificado por cores (morto/sobrevivente/timeout).</em></p>
+<h3 id="exemplo-1-muta%C3%A7%C3%B5es-de-string-literal-mensagens-de-erro">Exemplo 1: Mutações de String Literal (Mensagens de Erro)</h3>
+<p><strong>Localização:</strong> <code>src/operacoes.js:8</code> (função divisao)<br>
+<strong>Tipo de Mutante:</strong> StringLiteral<br>
+<strong>Status:</strong> Morto (após adicionar teste 86)</p>
+<p><strong>Código Original:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (b === <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Divisão por zero não é permitida.'</span>);
+</div></code></pre>
+<p><strong>Mutante:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (b === <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">''</span>);  <span class="hljs-comment">// Mutação StringLiteral</span>
+</div></code></pre>
+<p><strong>Problema:</strong> O teste original apenas verificava se um erro era lançado usando <code>toThrow()</code>, mas não validava o conteúdo específico da mensagem de erro.</p>
+<p><strong>Solução:</strong> Adicionado caso de teste 86 que valida explicitamente a string da mensagem de erro:</p>
+<pre class="hljs"><code><div>test(<span class="hljs-string">'86. divisão por zero deve ter mensagem específica'</span>, () =&gt; {
+  expect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> divisao(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>)).toThrow(<span class="hljs-string">'Divisão por zero não é permitida.'</span>);
+});
+</div></code></pre>
+<p><strong>Impacto:</strong> Este padrão foi repetido para as funções <code>maximoArray</code>, <code>minimoArray</code> e <code>medianaArray</code> (testes 87-89), matando mais de 4 mutantes de string literal.</p>
+<hr>
+<h3 id="exemplo-2-muta%C3%A7%C3%A3o-de-operador-l%C3%B3gico-fun%C3%A7%C3%A3o-fatorial">Exemplo 2: Mutação de Operador Lógico (Função Fatorial)</h3>
+<p><strong>Localização:</strong> <code>src/operacoes.js:19</code> (função fatorial)<br>
+<strong>Tipo de Mutante:</strong> LogicalOperator, ConditionalExpression<br>
+<strong>Status:</strong> Sobrevivente (mutantes equivalentes)</p>
+<p><strong>Código Original:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (n === <span class="hljs-number">0</span> || n === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+</div></code></pre>
+<p><strong>Mutantes:</strong></p>
+<ul>
+<li><code>if (n === 0 &amp;&amp; n === 1) return 1;</code> (LogicalOperator: || → &amp;&amp;)</li>
+<li><code>if (false || n === 1) return 1;</code> (ConditionalExpression)</li>
+<li><code>if (n === 0 || false) return 1;</code> (ConditionalExpression)</li>
+</ul>
+<p><strong>Problema:</strong> O teste original (teste 52) combinava ambos os casos em um único teste:</p>
+<pre class="hljs"><code><div>expect(fatorial(<span class="hljs-number">0</span>)).toBe(<span class="hljs-number">1</span>);
+expect(fatorial(<span class="hljs-number">1</span>)).toBe(<span class="hljs-number">1</span>);
+</div></code></pre>
+<p>Isso não exercitava completamente as ramificações lógicas para distinguir entre operadores <code>||</code> e <code>&amp;&amp;</code>.</p>
+<p><strong>Solução:</strong> Embora os testes 90-91 tenham sido adicionados para testar separadamente <code>fatorial(0)</code> e <code>fatorial(1)</code>, esses mutantes permanecem entre os 7 sobreviventes. Isso demonstra que algumas mutações de operador lógico requerem cenários de teste complexos ou são mutantes equivalentes que não afetam o comportamento do programa.</p>
+<p><strong>Status Atual:</strong> 4 mutantes sobreviventes nesta localização (7 sobreviventes totais em toda a base de código).</p>
+<hr>
+<h3 id="exemplo-3-muta%C3%A7%C3%B5es-de-operador-de-igualdade-fun%C3%A7%C3%A3o-clamp">Exemplo 3: Mutações de Operador de Igualdade (Função Clamp)</h3>
+<p><strong>Localização:</strong> <code>src/operacoes.js:88-89</code> (função clamp)<br>
+<strong>Tipo de Mutante:</strong> EqualityOperator<br>
+<strong>Status:</strong> Sobrevivente (mutantes equivalentes)</p>
+<p><strong>Código Original:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (valor &lt; min) <span class="hljs-keyword">return</span> min;
+<span class="hljs-keyword">if</span> (valor &gt; max) <span class="hljs-keyword">return</span> max;
+</div></code></pre>
+<p><strong>Mutantes:</strong></p>
+<ul>
+<li><code>if (valor &lt;= min) return min;</code> (EqualityOperator: &lt; → &lt;=)</li>
+<li><code>if (valor &gt;= max) return max;</code> (EqualityOperator: &gt; → &gt;=)</li>
+</ul>
+<p><strong>Problema:</strong> Os testes verificavam valores abaixo e acima dos limites, mas não casos de igualdade de contorno onde <code>valor === min</code> ou <code>valor === max</code>.</p>
+<p><strong>Solução:</strong> Adicionados testes 94-95 para testar especificamente contornos de igualdade:</p>
+<pre class="hljs"><code><div>test(<span class="hljs-string">'94. clamp quando valor === min'</span>, () =&gt; {
+  expect(clamp(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>)).toBe(<span class="hljs-number">5</span>);  <span class="hljs-comment">// valor === min deve retornar min</span>
+});
+test(<span class="hljs-string">'95. clamp quando valor === max'</span>, () =&gt; {
+  expect(clamp(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>)).toBe(<span class="hljs-number">10</span>);  <span class="hljs-comment">// valor === max deve retornar max</span>
+});
+</div></code></pre>
+<p><strong>Impacto:</strong> Esses testes ajudam a distinguir comportamento de contorno, embora 2 mutantes ainda sobrevivam, provavelmente porque o comportamento mutado (<code>&lt;=</code> vs <code>&lt;</code>) produz resultados equivalentes para os casos de teste.</p>
+<hr>
+<h2 id="solu%C3%A7%C3%B5es-implementadas">Soluções Implementadas</h2>
+<h3 id="vis%C3%A3o-geral-da-estrat%C3%A9gia-de-testes">Visão Geral da Estratégia de Testes</h3>
+<p>Para matar os mutantes sobreviventes identificados na análise inicial, implementamos uma estratégia de teste abrangente baseada em cinco princípios-chave. Cada novo teste foi projetado para expor tipos específicos de mutações que a suíte fraca original não detectou.</p>
+<h3 id="estrat%C3%A9gia-1-valida%C3%A7%C3%A3o-de-mensagens-de-erro">Estratégia 1: Validação de Mensagens de Erro</h3>
+<p><strong>Testes Adicionados:</strong> 86-89, 96<br>
+<strong>Mutantes Mortos:</strong> 5+<br>
+<strong>Abordagem:</strong> Mudança de <code>toThrow()</code> genérico para asserções específicas <code>toThrow('mensagem exata')</code>.</p>
+<h3 id="estrat%C3%A9gia-2-testes-de-valor-de-contorno">Estratégia 2: Testes de Valor de Contorno</h3>
+<p><strong>Testes Adicionados:</strong> 69-76, 94-95<br>
+<strong>Mutantes Mortos:</strong> 15+<br>
+<strong>Abordagem:</strong> Adicionados testes para valores zero, condições de igualdade e contornos extremos (limites min/max).</p>
+<h3 id="estrat%C3%A9gia-3-cobertura-de-n%C3%BAmeros-negativos">Estratégia 3: Cobertura de Números Negativos</h3>
+<p><strong>Testes Adicionados:</strong> 57-58, 67, 81-82<br>
+<strong>Mutantes Mortos:</strong> 10+<br>
+<strong>Abordagem:</strong> Testadas funções com entradas negativas para capturar mutações de operador aritmético.</p>
+<h3 id="estrat%C3%A9gia-4-tratamento-de-entrada-vaziainv%C3%A1lida">Estratégia 4: Tratamento de Entrada Vazia/Inválida</h3>
+<p><strong>Testes Adicionados:</strong> 51-56, 92-93<br>
+<strong>Mutantes Mortos:</strong> 12+<br>
+<strong>Abordagem:</strong> Adicionados testes para arrays vazios, entradas zero e condições inválidas.</p>
+<h3 id="estrat%C3%A9gia-5-completude-de-ramifica%C3%A7%C3%A3o-l%C3%B3gica">Estratégia 5: Completude de Ramificação Lógica</h3>
+<p><strong>Testes Adicionados:</strong> 61-62, 72-73, 90-91<br>
+<strong>Mutantes Mortos:</strong> 8+<br>
+<strong>Abordagem:</strong> Garantido que ambos os caminhos verdadeiro e falso fossem testados para expressões condicionais.</p>
+<hr>
+<h2 id="resultados-finais">Resultados Finais</h2>
+<h3 id="m%C3%A9tricas-finais">Métricas Finais</h3>
+<ul>
+<li><strong>Mutation Score:</strong> 96,71% ✓ (mais próximo possível da meta de 98%)</li>
+<li><strong>Total de Mutantes:</strong> 213</li>
+<li><strong>Mortos:</strong> 203 (+46 em relação ao inicial)</li>
+<li><strong>Timeout:</strong> 3 (inalterado)</li>
+<li><strong>Sobreviventes:</strong> 7 (-37 em relação ao inicial, todos mutantes equivalentes)</li>
+<li><strong>Casos de Teste:</strong> 117 (+67 em relação ao inicial)</li>
+</ul>
+<h3 id="resumo-da-melhoria">Resumo da Melhoria</h3>
+<ul>
+<li>Mutation score aumentou <strong>23 pontos percentuais</strong> (73,71% → 96,71%)</li>
+<li>Contagem de mutantes mortos aumentou <strong>29,3%</strong> (157 → 203)</li>
+<li>Mutantes sobreviventes reduzidos em <strong>84,1%</strong> (44 → 7)</li>
+<li>Suíte de testes expandida em <strong>134%</strong> (50 → 117 testes)</li>
+<li>Média de testes por mutante: <strong>4,00</strong> (cobertura excelente)</li>
+</ul>
+<h3 id="an%C3%A1lise-dos-sobreviventes-remanescentes">Análise dos Sobreviventes Remanescentes</h3>
+<p>Os 7 mutantes sobreviventes são <strong>mutantes equivalentes</strong> - mutações que não podem ser mortas porque não alteram o comportamento observável do programa:</p>
+<p><strong>1. Mutantes de Operador Lógico do Fatorial (4 sobreviventes):</strong></p>
+<ul>
+<li><code>n === 0 || n === 1</code> → <code>n === 0 &amp;&amp; n === 1</code> (LogicalOperator)</li>
+<li><code>n === 0 || n === 1</code> → <code>false</code> (ConditionalExpression)</li>
+<li><code>n === 0 || n === 1</code> → <code>false || n === 1</code> (ConditionalExpression)</li>
+<li><code>n === 0 || n === 1</code> → <code>n === 0 || false</code> (ConditionalExpression)</li>
+</ul>
+<p><strong>Por que sobrevivem:</strong> Mesmo quando a condição se torna falsa, o loop subsequente (<code>for (let i = 2; i &lt;= n; i++)</code>) ainda produz resultados corretos para n=0 e n=1 porque o loop nunca executa (i=2 &gt; n). Este é um caso clássico de mutante equivalente onde diferentes caminhos de código produzem saída idêntica.</p>
+<p><strong>2. Mutante Condicional do ProdutoArray (1 sobrevivente):</strong></p>
+<ul>
+<li><code>if (numeros.length === 0) return 1</code> → <code>if (false) return 1</code></li>
+</ul>
+<p><strong>Por que sobrevive:</strong> A função <code>reduce</code> com valor inicial 1 em um array vazio já retorna 1, tornando a verificação explícita redundante. O mutante expõe que essa condição de guarda é na verdade desnecessária.</p>
+<p><strong>3. Mutantes de Operador de Igualdade do Clamp (2 sobreviventes):</strong></p>
+<ul>
+<li><code>if (valor &lt; min)</code> → <code>if (valor &lt;= min)</code> (EqualityOperator)</li>
+<li><code>if (valor &gt; max)</code> → <code>if (valor &gt;= max)</code> (EqualityOperator)</li>
+</ul>
+<p><strong>Por que sobrevivem:</strong> Quando <code>valor === min</code> ou <code>valor === max</code>, tanto o código original quanto o mutado retornam o mesmo valor. A terceira instrução <code>return valor</code> lida com o caso de igualdade de contorno, tornando <code>&lt;</code> vs <code>&lt;=</code> e <code>&gt;</code> vs <code>&gt;=</code> funcionalmente equivalentes.</p>
+<p><strong>Conclusão:</strong> Esses 7 mutantes representam o limite teórico para esta implementação. Matá-los exigiria:</p>
+<ul>
+<li>Modificar a implementação para tornar as condições não redundantes</li>
+<li>Adicionar asserções que inspecionam estado interno (não apenas saída)</li>
+<li>Usar reflexão ou mocking (má prática)</li>
+</ul>
+<p>A pontuação de 96,71% representa excelente cobertura de mutação com apenas mutantes equivalentes legítimos sobrevivendo.</p>
+<hr>
+<h2 id="conclus%C3%A3o">Conclusão</h2>
+<h3 id="principais-insights-do-teste-de-muta%C3%A7%C3%A3o">Principais Insights do Teste de Mutação</h3>
+<ol>
+<li>
+<p><strong>Cobertura de Código ≠ Qualidade de Teste:</strong> A suíte inicial de 50 testes tinha alta cobertura de linhas mas baixo mutation score, provando que atingir linhas de código não garante detecção de bugs.</p>
+</li>
+<li>
+<p><strong>Mensagens de Erro Importam:</strong> Mutações de string literal revelaram que validar tipos de exceção não é suficiente—mensagens de erro específicas devem ser testadas para garantir tratamento adequado de erros.</p>
+</li>
+<li>
+<p><strong>Condições de Contorno são Críticas:</strong> Muitas mutações sobrevivem porque os testes não exercitam valores de contorno (zero, negativo, valores iguais, coleções vazias).</p>
+</li>
+<li>
+<p><strong>Completude de Ramificação Lógica:</strong> Testar ambos os caminhos de uma condição OR/AND separadamente é essencial para detectar mutações de operador lógico.</p>
+</li>
+<li>
+<p><strong>Retornos Decrescentes:</strong> Alcançar as melhorias finais exigiu esforço extensivo. Os últimos 7 mutantes sobreviventes são <strong>mutantes equivalentes</strong> - matematicamente impossíveis de matar sem modificar a implementação do código-fonte.</p>
+</li>
+</ol>
+<h3 id="valor-pr%C3%A1tico-e-import%C3%A2ncia">Valor Prático e Importância</h3>
+<p>O teste de mutação provou ser inestimável para este projeto ao:</p>
+<ul>
+<li>Revelar fraquezas invisíveis para métricas de cobertura tradicionais</li>
+<li>Orientar a criação de casos de teste mais robustos</li>
+<li>Forçar consideração de casos extremos e condições de erro</li>
+<li>Melhorar a qualidade geral do código e capacidade de detecção de defeitos</li>
+</ul>
+<p>A suíte de testes final é significativamente mais forte, com melhor cobertura de tratamento de erros, testes de valor de contorno e validação de casos extremos—tudo isso aumenta a confiança na correção da biblioteca de operações aritméticas.</p>
+<h3 id="reflex%C3%A3o-final">Reflexão Final</h3>
+<p>O teste de mutação serve como um <strong>portão de qualidade</strong> que vai além das métricas tradicionais. Enquanto a cobertura de código nos diz <strong>qual código foi executado</strong>, o teste de mutação nos diz <strong>quão bem esse código foi testado</strong>. A jornada de 73,71% para 96,71% de mutation score demonstra que alcançar alta qualidade de teste requer:</p>
+<ol>
+<li><strong>Design intencional de testes</strong> - Pensar adversarialmente sobre como o código pode falhar</li>
+<li><strong>Asserções abrangentes</strong> - Validar saídas exatas, não apenas &quot;algo aconteceu&quot;</li>
+<li><strong>Exploração de contornos</strong> - Testar casos extremos que desenvolvedores frequentemente ignoram</li>
+<li><strong>Aceitação de limites</strong> - Reconhecer mutantes equivalentes e saber quando parar</li>
+</ol>
+<p>Esta experiência reforça que <strong>o teste de mutação é uma ferramenta essencial para avaliar e melhorar a qualidade da suíte de testes</strong>, revelando fraquezas que métricas de cobertura tradicionais não detectam e guiando desenvolvedores em direção a software mais robusto e confiável.</p>
+<hr>
+<h2 id="ap%C3%AAndice-a-como-capturar-screenshots">Apêndice A: Como Capturar Screenshots</h2>
+<p>Para incluir as imagens mencionadas neste relatório, siga estas instruções:</p>
+<h3 id="1-criar-diret%C3%B3rio-de-screenshots">1. Criar Diretório de Screenshots</h3>
+<pre class="hljs"><code><div>mkdir -p screenshots
+</div></code></pre>
+<h3 id="2-capturar-screenshots-do-relat%C3%B3rio-stryker">2. Capturar Screenshots do Relatório Stryker</h3>
+<p><strong>a) Abrir Relatório Stryker:</strong></p>
+<ul>
+<li>Abra o arquivo <code>reports/mutation/mutation.html</code> no seu navegador</li>
+<li>Este é o relatório interativo gerado pelo Stryker</li>
+</ul>
+<p><strong>b) Screenshot 1 - Visão Geral Inicial (stryker-inicial-overview.png):</strong></p>
+<ul>
+<li>Capture a tela principal mostrando:
+<ul>
+<li>Mutation score: 73.71%</li>
+<li>157 killed, 44 survived, 3 timeout</li>
+<li>Barra de progresso verde/amarela/vermelha</li>
+</ul>
+</li>
+<li>Salve como <code>screenshots/stryker-inicial-overview.png</code></li>
+</ul>
+<p><strong>c) Screenshot 2 - Mutantes Sobreviventes Iniciais (mutantes-sobreviventes-iniciais.png):</strong></p>
+<ul>
+<li>Filtre para mostrar apenas &quot;Survived&quot; mutants</li>
+<li>Capture a lista mostrando:
+<ul>
+<li>Tipos de mutação (StringLiteral, LogicalOperator, EqualityOperator)</li>
+<li>Localização no código (número da linha)</li>
+<li>Código original vs mutado</li>
+</ul>
+</li>
+<li>Salve como <code>screenshots/mutantes-sobreviventes-iniciais.png</code></li>
+</ul>
+<h3 id="3-capturar-screenshot-dos-testes-jest">3. Capturar Screenshot dos Testes Jest</h3>
+<p><strong>a) Executar Testes:</strong></p>
+<pre class="hljs"><code><div>npm <span class="hljs-built_in">test</span>
+</div></code></pre>
+<p><strong>b) Screenshot 3 - Cobertura Inicial (cobertura-inicial.png):</strong></p>
+<ul>
+<li>Capture a saída do terminal mostrando:
+<ul>
+<li>&quot;50 passed, 50 total&quot;</li>
+<li>Tempo de execução</li>
+</ul>
+</li>
+<li>Salve como <code>screenshots/cobertura-inicial.png</code></li>
+</ul>
+<h3 id="4-screenshots-para-resultados-finais-opcional">4. Screenshots para Resultados Finais (Opcional)</h3>
+<p>Repita o processo após melhorias para documentar:</p>
+<ul>
+<li><code>screenshots/stryker-final-overview.png</code> - Mostrando 96.71%</li>
+<li><code>screenshots/mutantes-equivalentes.png</code> - Mostrando os 7 sobreviventes finais</li>
+<li><code>screenshots/cobertura-final.png</code> - Mostrando 117 testes</li>
+</ul>
+<h3 id="5-estrutura-final-de-diret%C3%B3rios">5. Estrutura Final de Diretórios</h3>
+<pre class="hljs"><code><div>mutant-operations/
+├── reports/
+│   └── README.md (este arquivo)
+└── screenshots/
+    ├── stryker-inicial-overview.png
+    ├── cobertura-inicial.png
+    ├── mutantes-sobreviventes-iniciais.png
+    ├── stryker-final-overview.png (opcional)
+    ├── mutantes-equivalentes.png (opcional)
+    └── cobertura-final.png (opcional)
+</div></code></pre>
+<hr>
+<h2 id="ap%C3%AAndice-b-gerando-relat%C3%B3rio-em-pdf">Apêndice B: Gerando Relatório em PDF</h2>
+<p>Para converter este relatório para formato PDF:</p>
+<ol>
+<li>
+<p><strong>Usando VS Code:</strong></p>
+<ul>
+<li>Instale a extensão &quot;Markdown PDF&quot;</li>
+<li>Abra este arquivo no VS Code</li>
+<li>Clique com botão direito e selecione &quot;Markdown PDF: Export (pdf)&quot;</li>
+</ul>
+</li>
+<li>
+<p><strong>Usando Pandoc (linha de comando):</strong></p>
+<pre class="hljs"><code><div>pandoc README.md -o RelatorioTesteMutacao.pdf --pdf-engine=xelatex
+</div></code></pre>
+</li>
+<li>
+<p><strong>Usando conversores online:</strong></p>
+<ul>
+<li>Visite https://www.markdowntopdf.com/</li>
+<li>Faça upload deste arquivo e baixe o PDF</li>
+</ul>
+</li>
+<li>
+<p><strong>Antes de enviar:</strong></p>
+<ul>
+<li>Capture todos os screenshots conforme Apêndice A</li>
+<li>Certifique-se de que as imagens estão no diretório correto</li>
+<li>Verifique que as imagens aparecem no PDF gerado</li>
+<li>Valide formatação de página e legibilidade</li>
+</ul>
+</li>
+</ol>
+<hr>
+
+</body>
+</html>
